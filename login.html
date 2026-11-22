@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXORA Studio | Login</title>
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#080d19;
+color:white;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px
+}
+.panel{
+width:100%;max-width:420px;
+background:#111c30;
+border:1px solid #263b59;
+border-radius:18px;
+padding:32px;
+box-shadow:0 15px 50px #0008
+}
+.logo{text-align:center;margin-bottom:25px}
+.logo h1{color:#26c6ff;letter-spacing:4px;margin-bottom:5px}
+.logo p{color:#9babc2;font-size:13px}
+h2{margin-bottom:20px}
+input{
+width:100%;padding:14px;
+margin:8px 0;
+border:1px solid #344964;
+border-radius:9px;
+background:#091426;color:white;
+outline:none
+}
+input:focus{border-color:#26c6ff}
+button{
+width:100%;padding:14px;
+margin-top:12px;
+border:0;border-radius:9px;
+background:#159bd2;color:white;
+font-weight:bold;cursor:pointer
+}
+button:hover{background:#087eae}
+.switch{text-align:center;color:#9babc2;margin-top:20px;font-size:14px}
+.switch a{color:#26c6ff;cursor:pointer}
+#message{font-size:13px;margin-top:15px;text-align:center}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="panel">
+<div class="logo">
+<h1>NEXORA</h1>
+<p>UNIFORM & LIVERY STUDIO</p>
+</div>
+
+<form id="loginForm">
+<h2>Welcome back</h2>
+<input type="email" id="loginEmail" placeholder="Email address" required>
+<input type="password" id="loginPassword" placeholder="Password" required>
+<button type="submit">Sign In</button>
+<div class="switch">New here? <a id="showRegister">Create account</a></div>
+</form>
+
+<form id="registerForm" class="hidden">
+<h2>Create your account</h2>
+<input type="text" id="registerName" placeholder="Full name" required>
+<input type="email" id="registerEmail" placeholder="Email address" required>
+<input type="password" id="registerPassword" placeholder="Password (8+ characters)" minlength="8" required>
+<button type="submit">Create Account</button>
+<div class="switch">Already registered? <a id="showLogin">Sign in</a></div>
+</form>
+
+<div id="message" role="status"></div>
+</div>
+
+<script>
+const loginForm=document.getElementById("loginForm");
+const registerForm=document.getElementById("registerForm");
+const message=document.getElementById("message");
+
+document.getElementById("showRegister").onclick=()=>{
+loginForm.classList.add("hidden");
+registerForm.classList.remove("hidden");
+message.textContent="";
+};
+
+document.getElementById("showLogin").onclick=()=>{
+registerForm.classList.add("hidden");
+loginForm.classList.remove("hidden");
+message.textContent="";
+};
+
+registerForm.onsubmit=async(e)=>{
+e.preventDefault();
+message.style.color="#ffbf69";
+message.textContent="Account registration is not connected yet.";
+};
+
+loginForm.onsubmit=async(e)=>{
+e.preventDefault();
+message.style.color="#ffbf69";
+message.textContent="Login is not connected yet.";
+};
+</script>
+</body>
+</html>
